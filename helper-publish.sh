@@ -20,9 +20,8 @@ bash helper-build-demo.sh
 printf "Publishing\n"
 #===============================================================================
 
-git checkout gh-pages
 git add --all
 git commit 
-git push origin gh-pages
+[ $? = 0 ] && git push origin gh-pages
 
 exit 0
