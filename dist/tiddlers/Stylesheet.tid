@@ -1,7 +1,0 @@
-title: $:/plugins/EnhancedSearchResults/Stylesheet
-tags: $:/tags/Stylesheet
-type: text/css
-
-div.tc-search-results {
-   padding-top: 0;
-}
