@@ -16,6 +16,6 @@ printf "Publishing\n"
 
 git add --all
 git commit 
-[ $? = 0 ] && git push origin
+[ $? = 0 ] && git push origin master
 
 exit 0
