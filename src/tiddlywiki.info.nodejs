@@ -1,0 +1,21 @@
+{
+  "plugins": [
+    "tiddlywiki/github-fork-ribbon",
+    "tiddlywiki/highlight",
+    "tiddlywiki/tiddlyweb",
+    "tiddlywiki/filesystem",
+    "spangenhelm/enhancedsearch"
+  ],
+  "themes": [
+    "tiddlywiki/vanilla"
+  ],
+  "languages": [
+    "en-US"
+  ],
+  "build": {
+    "index": ["--rendertiddler","$:/core/save/all","index.html","text/plain"]
+  },
+  "config": {
+    "retain-original-tiddler-path": true
+  }
+}
