@@ -1,7 +1,7 @@
 Displaying the search sesults in a sidebar tab
 ----
 
-Official demo: http://spangenhelm.github.io
+Official demo: http://spangenhelm.github.io/TW5-EnhancedSearchResults
 
 Following the github issue 1066 (https://github.com/Jermolene/TiddlyWiki5/issues/1066)
 and the corresponding google group https://groups.google.com/forum/#!topic/tiddlywiki/bTiOu_migHs
