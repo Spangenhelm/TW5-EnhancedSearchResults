@@ -117,6 +117,8 @@ Error message and password prompt
 
 <p>This <a class="tc-tiddlylink-external" href="http://tiddlywiki.com" target="_blank">TiddlyWiki</a> contains the following tiddlers:</p><p><ul>
 
+<li>$:/config/AnimationDuration</li>
+
 <li>$:/config/DefaultSidebarTab</li>
 
 <li>$:/config/OriginalTiddlerPaths</li>
@@ -131,7 +133,7 @@ Error message and password prompt
 
 <li>$:/plugins/danielo515/ContextPlugin</li>
 
-<li>$:/plugins/spangenhelm/enhancedsearch</li>
+<li>$:/plugins/felixhayashi&amp;spangenhelm/enhancedsearch</li>
 
 <li>$:/plugins/tiddlywiki/github-fork-ribbon</li>
 
@@ -141,15 +143,27 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/tab-274483074</li>
+
+<li>$:/state/tab/moresidebar-401116514</li>
+
+<li>$:/state/tab/sidebar--1835078512</li>
+
+<li>$:/status/UserName</li>
+
 <li>$:/StoryList</li>
+
+<li>$:/temp/advancedsearch</li>
 
 <li>$:/temp/info-plugin</li>
 
+<li>$:/temp/search</li>
+
 <li>$:/themes/tiddlywiki/vanilla</li>
 
-<li>Home</li>
+<li>FelixHayashi &amp; Spangenhelm</li>
 
-<li>Spangenhelm</li>
+<li>Home</li>
 
 <li>This Is A Test</li>
 
@@ -165,11 +179,14 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
+<div created="20150731181343073" creator="FelixHayashi &amp; Spangenhelm" modified="20150731181343073" modifier="FelixHayashi &amp; Spangenhelm" title="$:/config/AnimationDuration">
+<pre>200</pre>
+</div>
 <div created="20150724124649811" modified="20150724124648712" title="$:/config/DefaultSidebarTab" type="text/vnd.tiddlywiki">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/config/OriginalTiddlerPaths" type="application/json">
-<pre>{&quot;$:/DefaultTiddlers&quot;:&quot;$__DefaultTiddlers.tid&quot;,&quot;$:/SiteSubtitle&quot;:&quot;$__SiteSubtitle.tid&quot;,&quot;$:/SiteTitle&quot;:&quot;$__SiteTitle.tid&quot;,&quot;$:/StoryList&quot;:&quot;$__StoryList.tid&quot;,&quot;$:/config/DefaultSidebarTab&quot;:&quot;$__config_DefaultSidebarTab.tid&quot;,&quot;$:/favicon.ico&quot;:&quot;$__favicon.ico.tid&quot;,&quot;$:/plugins/danielo515/ContextPlugin&quot;:&quot;$__plugins_danielo515_ContextPlugin.tid&quot;,&quot;Home&quot;:&quot;Home.tid&quot;,&quot;Spangenhelm&quot;:&quot;Spangenhelm.tid&quot;,&quot;This Is A Test&quot;:&quot;This_Is_A_Test.tid&quot;,&quot;Welcome!&quot;:&quot;Welcome!.tid&quot;}</pre>
+<pre>{&quot;$:/DefaultTiddlers&quot;:&quot;$__DefaultTiddlers.tid&quot;,&quot;$:/SiteSubtitle&quot;:&quot;$__SiteSubtitle.tid&quot;,&quot;$:/SiteTitle&quot;:&quot;$__SiteTitle.tid&quot;,&quot;$:/StoryList&quot;:&quot;$__StoryList.tid&quot;,&quot;$:/config/DefaultSidebarTab&quot;:&quot;$__config_DefaultSidebarTab.tid&quot;,&quot;$:/favicon.ico&quot;:&quot;$__favicon.ico.tid&quot;,&quot;$:/plugins/danielo515/ContextPlugin&quot;:&quot;$__plugins_danielo515_ContextPlugin.tid&quot;,&quot;Home&quot;:&quot;Home.tid&quot;,&quot;FelixHayashi &amp; Spangenhelm&quot;:&quot;FelixHayashi_&amp;_Spangenhelm.tid&quot;,&quot;This Is A Test&quot;:&quot;This_Is_A_Test.tid&quot;,&quot;Welcome!&quot;:&quot;Welcome!.tid&quot;}</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.9">
 <pre>{
@@ -5936,12 +5953,12 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div author="Florent V." core-version="==5.1.8" dependents="" depends="" description="TW5-EnhancedSearchResults – Show search results in a tab" list="readme license" plugin-type="plugin" released="2015/07/24" source="https://github.com/Spangenhelm/TW5-EnhancedSearchResults" suggested="" title="$:/plugins/spangenhelm/enhancedsearch" type="application/json" version="0.0.2">
+<div author="Florent V." core-version="==5.1.8" dependents="" depends="" description="TW5-EnhancedSearchResults – Show search results in a tab" list="readme license" plugin-type="plugin" released="2015/07/24" source="https://github.com/Spangenhelm/TW5-EnhancedSearchResults" suggested="" title="$:/plugins/felixhayashi&amp;spangenhelm/enhancedsearch" type="application/json" version="0.0.2">
 <pre>{
     &quot;tiddlers&quot;: {
-        &quot;$:/plugins/spangenhelm/enhancedsearch/SearchTabManager.js&quot;: {
-            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/spangenhelm/enhancedsearch/SearchTabManager.js\ntype: application/javascript\nmodule-type: macro\n\\*/\n\n(function(){\n  \n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nexports.name = \&quot;search-tab-manager\&quot;;\nexports.params = [ { name : \&quot;searchTerm\&quot; }, { name: \&quot;qualifier\&quot; }  ];\n\n// constants\nvar sideBarTabPrefix = \&quot;$:/state/tab/sidebar-\&quot;;\nvar searchTabTRef = \&quot;$:/core/ui/SearchResults\&quot;;\nvar tabBackup = null;\n\n/**\n * Called: &lt;$macrocall $name=\&quot;search-tab-manager\&quot; searchTerm={{$:/temp/search}} /&gt;\n */\nexports.run = function(searchTerm, qualifier) {\n    \n  var tabsStateTRef = sideBarTabPrefix + this.getStateQualifier();    \n  var tabsStateTObj = $tw.wiki.getTiddler(tabsStateTRef);\n  \n  console.log(\&quot;sr:\&quot;, tabsStateTObj);\n  \n  if(tabsStateTObj) {\n    \n    if(searchTerm &amp;&amp; tabsStateTObj.fields.text !== searchTabTRef) {\n    \n      // backup old tab\n      tabBackup = tabsStateTObj.fields.text;\n      \n      // set tab to search results\n      $tw.wiki.addTiddler(new $tw.Tiddler({\n        title: tabsStateTRef,\n        text: searchTabTRef\n      }));\n      \n    } else if(!searchTerm &amp;&amp; tabsStateTObj.fields.text === searchTabTRef &amp;&amp; tabBackup) {\n          \n      // set tab to search results\n      $tw.wiki.addTiddler(new $tw.Tiddler({\n        title: tabsStateTRef,\n        text: tabBackup\n      }));\n      \n    }\n    \n  }\n  \n  // always return an empty string\n  return \&quot;\&quot;;\n  \n};\n\n})();&quot;,
-            &quot;title&quot;: &quot;$:/plugins/spangenhelm/enhancedsearch/SearchTabManager.js&quot;,
+        &quot;$:/plugins/felixhayashi&amp;spangenhelm/enhancedsearch/SearchTabManager.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/felixhayashi&amp;spangenhelm/enhancedsearch/SearchTabManager.js\ntype: application/javascript\nmodule-type: macro\n\\*/\n\n(function(){\n  \n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nexports.name = \&quot;search-tab-manager\&quot;;\nexports.params = [ { name : \&quot;searchTerm\&quot; }, { name: \&quot;qualifier\&quot; }  ];\n\n// constants\nvar sideBarTabPrefix = \&quot;$:/state/tab/sidebar-\&quot;;\nvar searchTabTRef = \&quot;$:/core/ui/SearchResults\&quot;;\nvar tabBackup = null;\n\n/**\n * Called: &lt;$macrocall $name=\&quot;search-tab-manager\&quot; searchTerm={{$:/temp/search}} /&gt;\n */\nexports.run = function(searchTerm, qualifier) {\n    \n  var tabsStateTRef = sideBarTabPrefix + this.getStateQualifier();    \n  var tabsStateTObj = $tw.wiki.getTiddler(tabsStateTRef);\n  \n  console.log(\&quot;sr:\&quot;, tabsStateTObj);\n  \n  if(tabsStateTObj) {\n    \n    if(searchTerm &amp;&amp; tabsStateTObj.fields.text !== searchTabTRef) {\n    \n      // backup old tab\n      tabBackup = tabsStateTObj.fields.text;\n      \n      // set tab to search results\n      $tw.wiki.addTiddler(new $tw.Tiddler({\n        title: tabsStateTRef,\n        text: searchTabTRef\n      }));\n      \n    } else if(!searchTerm &amp;&amp; tabsStateTObj.fields.text === searchTabTRef &amp;&amp; tabBackup) {\n          \n      // set tab to search results\n      $tw.wiki.addTiddler(new $tw.Tiddler({\n        title: tabsStateTRef,\n        text: tabBackup\n      }));\n      \n    }\n    \n  }\n  \n  // always return an empty string\n  return \&quot;\&quot;;\n  \n};\n\n})();&quot;,
+            &quot;title&quot;: &quot;$:/plugins/felixhayashi&amp;spangenhelm/enhancedsearch/SearchTabManager.js&quot;,
             &quot;type&quot;: &quot;application/javascript&quot;,
             &quot;module-type&quot;: &quot;macro&quot;
         },
@@ -6041,10 +6058,25 @@ Error message and password prompt
 <div created="20150326142653732" modified="20150724124830923" title="$:/SiteSubtitle" type="text/vnd.tiddlywiki">
 <pre>Have your search results displayed in a tab!</pre>
 </div>
-<div created="20150328133524849" modified="20150724124752643" title="$:/SiteTitle" type="text/vnd.tiddlywiki">
-<pre>EnhancedSearch Demo</pre>
+<div created="20150328133524849" creator="FelixHayashi &amp; Spangenhelm" modified="20150731181331074" modifier="FelixHayashi &amp; Spangenhelm" title="$:/SiteTitle" type="text/vnd.tiddlywiki">
+<pre>~EnhancedSearch Demo</pre>
+</div>
+<div modified="20150731181258759" modifier="FelixHayashi &amp; Spangenhelm" title="$:/state/tab-274483074">
+<pre>$:/core/ui/DefaultSearchResultList</pre>
+</div>
+<div modified="20150731180839779" modifier="FelixHayashi &amp; Spangenhelm" title="$:/state/tab/moresidebar-401116514">
+<pre>$:/core/ui/MoreSideBar/All</pre>
+</div>
+<div modified="20150731181351736" modifier="FelixHayashi &amp; Spangenhelm" title="$:/state/tab/sidebar--1835078512">
+<pre>$:/core/ui/SideBar/Open</pre>
+</div>
+<div created="20150731180757732" creator="FelixHayashi &amp; " modified="20150731180801383" modifier="FelixHayashi &amp; Spangenhel" title="$:/status/UserName">
+<pre>FelixHayashi &amp; Spangenhelm</pre>
 </div>
 <div list="Welcome!" title="$:/StoryList">
+<pre></pre>
+</div>
+<div created="20150731180846660" creator="FelixHayashi &amp; Spangenhelm" modified="20150731180934620" modifier="FelixHayashi &amp; Spangenhelm" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6052,14 +6084,17 @@ Error message and password prompt
     &quot;tiddlers&quot;: {
         &quot;$:/info/browser&quot;: {
             &quot;title&quot;: &quot;$:/info/browser&quot;,
-            &quot;text&quot;: &quot;no&quot;
+            &quot;text&quot;: &quot;yes&quot;
         },
         &quot;$:/info/node&quot;: {
             &quot;title&quot;: &quot;$:/info/node&quot;,
-            &quot;text&quot;: &quot;yes&quot;
+            &quot;text&quot;: &quot;no&quot;
         }
     }
 }</pre>
+</div>
+<div modified="20150731181300215" modifier="FelixHayashi &amp; Spangenhelm" title="$:/temp/search">
+<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="Basic theme" name="Vanilla" plugin-type="theme" title="$:/themes/tiddlywiki/vanilla" type="application/json" version="5.1.9">
 <pre>{
@@ -6155,18 +6190,20 @@ Error message and password prompt
     }
 }</pre>
 </div>
+<div created="20150508172532148" creator="FelixHayashi &amp; Spangenhelm" modified="20150731181226079" modifier="FelixHayashi &amp; Spangenhelm" title="FelixHayashi &amp; Spangenhelm" type="text/vnd.tiddlywiki">
+<pre>https://github.com/FelixHayashi
+
+https://github.com/Spangenhelm</pre>
+</div>
 <div color="#e7f1de" created="20150724120845959" modified="20150724120950789" title="Home" type="text/vnd.tiddlywiki">
 <pre></pre>
 </div>
-<div created="20150508172532148" creator="Spangenhelm" modified="20150508172535891" modifier="Spangenhelm" title="Spangenhelm" type="text/vnd.tiddlywiki">
-<pre>https://github.com/Spangenhelm</pre>
-</div>
-<div created="20150328230549636" creator="Spangenhelm" modified="20150508174919995" modifier="Spangenhelm" tags="" title="This Is A Test" type="text/vnd.tiddlywiki">
+<div created="20150328230549636" creator="FelixHayashi &amp; Spangenhelm" modified="20150508174919995" modifier="FelixHayashi &amp; Spangenhelm" tags="" title="This Is A Test" type="text/vnd.tiddlywiki">
 <pre>! Working !
 
 This Is A Test</pre>
 </div>
-<div created="20150326143132027" creator="Spangenhelm" modified="20150724124900552" modifier="Spangenhelm" tags="Home" title="Welcome!" type="text/vnd.tiddlywiki">
+<div created="20150326143132027" creator="FelixHayashi &amp; Spangenhelm" modified="20150731181054589" modifier="FelixHayashi &amp; Spangenhelm" tags="Home" title="Welcome!" type="text/vnd.tiddlywiki">
 <pre>\rules except wikilink
 
 !! About this plugin
@@ -6194,8 +6231,8 @@ When running tiddlywiki via nodejs, just download and reference the files in the
 !!! ''Stand-alone''
 
 When running TiddlyWiki in stand-alone mode, grab one of the versions below and make sure you pick the version that matches your TiddlyWiki version.
-* [[EnhancedSearchResults (TW v5.1.8)|$:/plugins/EnhancedSearchResults 5.1.8]]
-* [[EnhancedSearchResults (TW v5.1.7)|$:/plugins/EnhancedSearchResults 5.1.7]]&lt;br /&gt;
+
+* [[EnhancedSearchResults Plugin (TW v5.1.9)|$:/plugins/felixhayashi&amp;spangenhelm/enhancedsearch]]
 
 !! Want to make it even better?
 
