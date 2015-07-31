@@ -7,7 +7,7 @@
 interpreterRoot="./node_modules/tiddlywiki/"
 interpreterMain="${interpreterRoot}/tiddlywiki.js"
 pluginDistPath="../master/dist/"
-pluginAuthor="spangenhelm"
+pluginAuthor="FelixHayashi & Spangenhelm"
 pluginTitle="enhancedsearch"
 demoSrcRootPath="./src/"
 demoOutputPath="./"

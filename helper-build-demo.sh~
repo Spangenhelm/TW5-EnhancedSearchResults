@@ -7,13 +7,13 @@
 interpreterRoot="./node_modules/tiddlywiki/"
 interpreterMain="${interpreterRoot}/tiddlywiki.js"
 pluginDistPath="../master/dist/"
-pluginAuthor="FelixHayashi & Spangenhelm"
+pluginAuthor="spangenhelm"
 pluginTitle="enhancedsearch"
 demoSrcRootPath="./src/"
-port="8081"
+demoOutputPath="./"
 
 ################################################################################
-# Program
+# Runtime
 ################################################################################
 
 #====================================================================
@@ -36,14 +36,16 @@ ln -s -r "$pluginDistPath" "$lnDest/${pluginTitle}"
 printf "\nPreparing tiddlywiki.info\n"
 #====================================================================
 
-cp -f "${demoSrcRootPath}/tiddlywiki.info.nodejs" "${demoSrcRootPath}/tiddlywiki.info"
+cp -f "$demoSrcRootPath/tiddlywiki.info.single" "$demoSrcRootPath/tiddlywiki.info"
 
 echo "using:"
 echo
-cat "${demoSrcRootPath}/tiddlywiki.info"
+cat "$demoSrcRootPath/tiddlywiki.info"
 
-#====================================================================
-printf "\nStarting server on port $port\n"
-#====================================================================
+#===============================================================================
+printf "Building demo\n"
+#===============================================================================
 
-node $interpreterMain $demoSrcRootPath --verbose --server $port
+node $interpreterMain $demoSrcRootPath --verbose --output $demoOutputPath --build
+
+exit 0
