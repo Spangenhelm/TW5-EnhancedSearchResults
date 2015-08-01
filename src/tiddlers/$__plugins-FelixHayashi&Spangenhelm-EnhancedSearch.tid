@@ -1,0 +1,47 @@
+author: FelixHayashi & Spangenhelm
+core-version: ==5.1.8
+dependents: 
+depends: 
+description: TW5-EnhancedSearchResults – Show search results in a tab
+list: readme license
+plugin-type: plugin
+released: 2015/07/24
+source: https://github.com/Spangenhelm/TW5-EnhancedSearchResults
+suggested: 
+title: $:/plugins/FelixHayashi&Spangenhelm/EnhancedSearch
+type: application/json
+version: 0.0.2
+
+{
+    "tiddlers": {
+        "$:/plugins/FelixHayashi&Spangenhelm/EnhancedSearch/searchtabmanager.js": {
+            "text": "/*\\\ntitle: $:/plugins/FelixHayashi&Spangenhelm/EnhancedSearch/searchtabmanager.js\ntype: application/javascript\nmodule-type: macro\n\\*/\n\n(function(){\n  \n/*jslint node: true, browser: true */\n/*global $tw: false */\n\"use strict\";\n\nexports.name = \"search-tab-manager\";\nexports.params = [ { name : \"searchTerm\" }, { name: \"qualifier\" }  ];\n\n// constants\nvar sideBarTabPrefix = \"$:/state/tab/sidebar-\";\nvar searchTabTRef = \"$:/core/ui/SearchResults\";\nvar tabBackup = null;\n\n/**\n * Called: <$macrocall $name=\"search-tab-manager\" searchTerm={{$:/temp/search}} />\n */\nexports.run = function(searchTerm, qualifier) {\n    \n  var tabsStateTRef = sideBarTabPrefix + this.getStateQualifier();    \n  var tabsStateTObj = $tw.wiki.getTiddler(tabsStateTRef);\n  \n  console.log(\"sr:\", tabsStateTObj);\n  \n  if(tabsStateTObj) {\n    \n    if(searchTerm && tabsStateTObj.fields.text !== searchTabTRef) {\n    \n      // backup old tab\n      tabBackup = tabsStateTObj.fields.text;\n      \n      // set tab to search results\n      $tw.wiki.addTiddler(new $tw.Tiddler({\n        title: tabsStateTRef,\n        text: searchTabTRef\n      }));\n      \n    } else if(!searchTerm && tabsStateTObj.fields.text === searchTabTRef && tabBackup) {\n          \n      // set tab to search results\n      $tw.wiki.addTiddler(new $tw.Tiddler({\n        title: tabsStateTRef,\n        text: tabBackup\n      }));\n      \n    }\n    \n  }\n  \n  // always return an empty string\n  return \"\";\n  \n};\n\n})();",
+            "title": "$:/plugins/FelixHayashi&Spangenhelm/EnhancedSearch/searchtabmanager.js",
+            "type": "application/javascript",
+            "module-type": "macro"
+        },
+        "$:/plugins/FelixHayashi&Spangenhelm/EnhancedSearch/stylesheet": {
+            "title": "$:/plugins/FelixHayashi&Spangenhelm/EnhancedSearch/stylesheet",
+            "tags": "$:/tags/Stylesheet",
+            "type": "text/css",
+            "text": "div.tc-search-results {\n   padding-top: 0;\n}"
+        },
+        "$:/core/ui/SideBarLists": {
+            "title": "$:/core/ui/SideBarLists",
+            "text": "<div class=\"tc-sidebar-lists\">\n<div class=\"tc-search\">\n<$edit-text tiddler=\"$:/temp/search\" type=\"search\" tag=\"input\" focus=\"true\"/>\n<$macrocall $name=\"search-tab-manager\" searchTerm={{$:/temp/search}} />\n<$reveal state=\"$:/temp/search\" type=\"nomatch\" text=\"\">\n<$button tooltip={{$:/language/Buttons/AdvancedSearch/Hint}} aria-label={{$:/language/Buttons/AdvancedSearch/Caption}} class=\"tc-btn-invisible\">\n<$action-setfield $tiddler=\"$:/temp/advancedsearch\" text={{$:/temp/search}}/>\n<$action-setfield $tiddler=\"$:/temp/search\" text=\"\"/>\n<$action-navigate $to=\"$:/AdvancedSearch\"/>\n{{$:/core/images/advanced-search-button}}\n</$button>\n<$button class=\"tc-btn-invisible\">\n<$action-setfield $tiddler=\"$:/temp/search\" text=\"\" />\n{{$:/core/images/close-button}}\n</$button>\n</$reveal>\n<$reveal state=\"$:/temp/search\" type=\"match\" text=\"\">\n<$button to=\"$:/AdvancedSearch\" tooltip={{$:/language/Buttons/AdvancedSearch/Hint}} aria-label={{$:/language/Buttons/AdvancedSearch/Caption}} class=\"tc-btn-invisible\">\n{{$:/core/images/advanced-search-button}}\n</$button>\n</$reveal>\n</div>\n\n<$reveal state=\"$:/temp/search\" type=\"nomatch\" text=\"\">\n\n<$set name=\"searchTiddler\" value=\"$:/temp/search\">\n<$macrocall $name=\"tabs\" tabsList=\"$:/core/ui/SearchResults[all[shadows+tiddlers]tag[$:/tags/SideBar]!has[draft.of]]\"  default=\"$:/core/ui/SearchResults\" state=\"$:/state/tab/sidebar\" />\n</$set>\n\n</$reveal>\n\n<$reveal state=\"$:/temp/search\" type=\"match\" text=\"\">\n\n<$macrocall $name=\"tabs\" tabsList=\"[all[shadows+tiddlers]tag[$:/tags/SideBar]!has[draft.of]]\"  default={{$:/config/DefaultSidebarTab}} state=\"$:/state/tab/sidebar\" />\n\n</$reveal>\n</div>"
+        },
+        "$:/core/ui/SearchResults": {
+            "title": "$:/core/ui/SearchResults",
+            "caption": "{{$:/language/SideBar/Search/Caption}}",
+            "text": "<div class=\"tc-search-results\">\n<$list filter=\"[all[shadows+tiddlers]tag[$:/tags/SearchResults]!has[draft.of]butfirst[]limit[1]]\" emptyMessage=\"\"\"\n<$list filter=\"[all[shadows+tiddlers]tag[$:/tags/SearchResults]!has[draft.of]]\">\n<$transclude mode=\"block\"/>\n</$list>\n\"\"\">\n<$macrocall $name=\"tabs\" tabsList=\"[all[shadows+tiddlers]tag[$:/tags/SearchResults]!has[draft.of]]\" default={{$:/config/SearchResults/Default}}/>\n</$list>\n</div>\n"
+        },
+        "$:/language/SideBar/Search/Caption": {
+            "title": "$:/language/SideBar/Search/Caption",
+            "text": "Search"
+        },
+        "$:/plugins/FelixHayashi&Spangenhelm/EnhancedSearch/readme": {
+            "title": "$:/plugins/FelixHayashi&Spangenhelm/EnhancedSearch/readme",
+            "text": "This plugin allows you to have the search-results displayed in a tab without hiding other existing tabs in the sidebar.\n"
+        }
+    }
+}

@@ -5,3 +5,4 @@
 
 # ignore file in these paths
 node_modules/
+*helper
