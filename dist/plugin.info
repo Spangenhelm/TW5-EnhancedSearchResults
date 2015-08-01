@@ -1,7 +1,7 @@
 {
-  "title": "$:/plugins/spangenhelm/enhancedsearch",
+  "title": "$:/plugins/FelixHayashi&Spangenhelm/enhancedsearch",
   "description": "TW5-EnhancedSearchResults – Show search results in a tab",
-  "author": "Florent V.",
+  "author": "FelixHayashi & Spangenhelm",
   "version": "0.0.2",
   "released": "2015/07/24",
   "core-version": "5.1.9",

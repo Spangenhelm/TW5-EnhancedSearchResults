@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/spangenhelm/enhancedsearch/SearchTabManager.js
+title: $:/plugins/FelixHayashi&Spangenhelm/EnhancedSearch/searchtabmanager.js
 type: application/javascript
 module-type: macro
 \*/
