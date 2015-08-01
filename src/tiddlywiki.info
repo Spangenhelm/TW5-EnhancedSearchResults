@@ -1,8 +1,7 @@
 {
   "plugins": [
-    "tiddlywiki/github-fork-ribbon",
     "tiddlywiki/highlight",
-    "FelixHayashi&Spangenhelm/EnhancedSearch"
+    "spangenhelm/enhancedsearch"
   ],
   "themes": [
     "tiddlywiki/vanilla"

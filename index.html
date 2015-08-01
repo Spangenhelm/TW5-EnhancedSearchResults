@@ -132,9 +132,7 @@ Error message and password prompt
 
 <li>$:/plugins/danielo515/ContextPlugin</li>
 
-<li>$:/plugins/FelixHayashi&amp;Spangenhelm/EnhancedSearch</li>
-
-<li>$:/plugins/tiddlywiki/github-fork-ribbon</li>
+<li>$:/plugins/spangenhelm/enhancedsearch</li>
 
 <li>$:/plugins/tiddlywiki/highlight</li>
 
@@ -172,7 +170,7 @@ Error message and password prompt
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/config/OriginalTiddlerPaths" type="application/json">
-<pre>{&quot;$:/DefaultTiddlers&quot;:&quot;$__DefaultTiddlers.tid&quot;,&quot;$:/SiteSubtitle&quot;:&quot;$__SiteSubtitle.tid&quot;,&quot;$:/SiteTitle&quot;:&quot;$__SiteTitle.tid&quot;,&quot;undefined&quot;:&quot;$__StoryList.tid&quot;,&quot;$:/config/DefaultSidebarTab&quot;:&quot;$__config_DefaultSidebarTab.tid&quot;,&quot;$:/favicon.ico&quot;:&quot;$__favicon.ico.tid&quot;,&quot;$:/plugins/FelixHayashi&amp;Spangenhelm/EnhancedSearch&quot;:&quot;$__plugins-FelixHayashi&amp;Spangenhelm-EnhancedSearch.tid&quot;,&quot;$:/plugins/danielo515/ContextPlugin&quot;:&quot;$__plugins_danielo515_ContextPlugin.tid&quot;,&quot;$:/status/UserName&quot;:&quot;$__status-UserName.tid&quot;,&quot;FelixHayashi &amp; Spangenhelm&quot;:&quot;FelixHayashi_&amp;_Spangenhelm.tid&quot;,&quot;Home&quot;:&quot;Home.tid&quot;,&quot;This Is A Test&quot;:&quot;This_Is_A_Test.tid&quot;,&quot;Welcome!&quot;:&quot;Welcome!.tid&quot;}</pre>
+<pre>{&quot;$:/DefaultTiddlers&quot;:&quot;$__DefaultTiddlers.tid&quot;,&quot;$:/SiteSubtitle&quot;:&quot;$__SiteSubtitle.tid&quot;,&quot;$:/SiteTitle&quot;:&quot;$__SiteTitle.tid&quot;,&quot;undefined&quot;:&quot;$__StoryList.tid&quot;,&quot;$:/config/DefaultSidebarTab&quot;:&quot;$__config_DefaultSidebarTab.tid&quot;,&quot;$:/favicon.ico&quot;:&quot;$__favicon.ico.tid&quot;,&quot;$:/plugins/danielo515/ContextPlugin&quot;:&quot;$__plugins_danielo515_ContextPlugin.tid&quot;,&quot;$:/status/UserName&quot;:&quot;$__status-UserName.tid&quot;,&quot;FelixHayashi &amp; Spangenhelm&quot;:&quot;FelixHayashi_&amp;_Spangenhelm.tid&quot;,&quot;Home&quot;:&quot;Home.tid&quot;,&quot;This Is A Test&quot;:&quot;This_Is_A_Test.tid&quot;,&quot;Welcome!&quot;:&quot;Welcome!.tid&quot;}</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.9">
 <pre>{
@@ -5939,20 +5937,14 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div author="FelixHayashi &amp; Spangenhelm" core-version="==5.1.8" dependents="" depends="" description="TW5-EnhancedSearchResults – Show search results in a tab" list="readme license" plugin-type="plugin" released="2015/07/24" source="https://github.com/Spangenhelm/TW5-EnhancedSearchResults" suggested="" title="$:/plugins/FelixHayashi&amp;Spangenhelm/EnhancedSearch" type="application/json" version="0.0.2">
+<div author="FelixHayashi &amp; Spangenhelm" core-version="5.1.9" dependents="" depends="" description="TW5-EnhancedSearchResults – Show search results in a tab" list="readme license" plugin-type="plugin" released="2015/07/24" source="https://github.com/Spangenhelm/TW5-EnhancedSearchResults" suggested="" title="$:/plugins/spangenhelm/enhancedsearch" type="application/json" version="0.0.2">
 <pre>{
     &quot;tiddlers&quot;: {
-        &quot;$:/plugins/FelixHayashi&amp;Spangenhelm/EnhancedSearch/searchtabmanager.js&quot;: {
-            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/FelixHayashi&amp;Spangenhelm/EnhancedSearch/searchtabmanager.js\ntype: application/javascript\nmodule-type: macro\n\\*/\n\n(function(){\n  \n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nexports.name = \&quot;search-tab-manager\&quot;;\nexports.params = [ { name : \&quot;searchTerm\&quot; }, { name: \&quot;qualifier\&quot; }  ];\n\n// constants\nvar sideBarTabPrefix = \&quot;$:/state/tab/sidebar-\&quot;;\nvar searchTabTRef = \&quot;$:/core/ui/SearchResults\&quot;;\nvar tabBackup = null;\n\n/**\n * Called: &lt;$macrocall $name=\&quot;search-tab-manager\&quot; searchTerm={{$:/temp/search}} /&gt;\n */\nexports.run = function(searchTerm, qualifier) {\n    \n  var tabsStateTRef = sideBarTabPrefix + this.getStateQualifier();    \n  var tabsStateTObj = $tw.wiki.getTiddler(tabsStateTRef);\n  \n  console.log(\&quot;sr:\&quot;, tabsStateTObj);\n  \n  if(tabsStateTObj) {\n    \n    if(searchTerm &amp;&amp; tabsStateTObj.fields.text !== searchTabTRef) {\n    \n      // backup old tab\n      tabBackup = tabsStateTObj.fields.text;\n      \n      // set tab to search results\n      $tw.wiki.addTiddler(new $tw.Tiddler({\n        title: tabsStateTRef,\n        text: searchTabTRef\n      }));\n      \n    } else if(!searchTerm &amp;&amp; tabsStateTObj.fields.text === searchTabTRef &amp;&amp; tabBackup) {\n          \n      // set tab to search results\n      $tw.wiki.addTiddler(new $tw.Tiddler({\n        title: tabsStateTRef,\n        text: tabBackup\n      }));\n      \n    }\n    \n  }\n  \n  // always return an empty string\n  return \&quot;\&quot;;\n  \n};\n\n})();&quot;,
-            &quot;title&quot;: &quot;$:/plugins/FelixHayashi&amp;Spangenhelm/EnhancedSearch/searchtabmanager.js&quot;,
+        &quot;$:/plugins/spangenhelm/enhancedsearch/searchtabmanager.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/spangenhelm/enhancedsearch/searchtabmanager.js\ntype: application/javascript\nmodule-type: macro\n\\*/\n\n(function(){\n  \n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nexports.name = \&quot;search-tab-manager\&quot;;\nexports.params = [ { name : \&quot;searchTerm\&quot; }, { name: \&quot;qualifier\&quot; }  ];\n\n// constants\nvar sideBarTabPrefix = \&quot;$:/state/tab/sidebar-\&quot;;\nvar searchTabTRef = \&quot;$:/core/ui/SearchResults\&quot;;\nvar tabBackup = null;\n\n/**\n * Called: &lt;$macrocall $name=\&quot;search-tab-manager\&quot; searchTerm={{$:/temp/search}} /&gt;\n */\nexports.run = function(searchTerm, qualifier) {\n    \n  var tabsStateTRef = sideBarTabPrefix + this.getStateQualifier();    \n  var tabsStateTObj = $tw.wiki.getTiddler(tabsStateTRef);\n  \n  console.log(\&quot;sr:\&quot;, tabsStateTObj);\n  \n  if(tabsStateTObj) {\n    \n    if(searchTerm &amp;&amp; tabsStateTObj.fields.text !== searchTabTRef) {\n    \n      // backup old tab\n      tabBackup = tabsStateTObj.fields.text;\n      \n      // set tab to search results\n      $tw.wiki.addTiddler(new $tw.Tiddler({\n        title: tabsStateTRef,\n        text: searchTabTRef\n      }));\n      \n    } else if(!searchTerm &amp;&amp; tabsStateTObj.fields.text === searchTabTRef &amp;&amp; tabBackup) {\n          \n      // set tab to search results\n      $tw.wiki.addTiddler(new $tw.Tiddler({\n        title: tabsStateTRef,\n        text: tabBackup\n      }));\n      \n    }\n    \n  }\n  \n  // always return an empty string\n  return \&quot;\&quot;;\n  \n};\n\n})();\n&quot;,
+            &quot;title&quot;: &quot;$:/plugins/spangenhelm/enhancedsearch/searchtabmanager.js&quot;,
             &quot;type&quot;: &quot;application/javascript&quot;,
             &quot;module-type&quot;: &quot;macro&quot;
-        },
-        &quot;$:/plugins/FelixHayashi&amp;Spangenhelm/EnhancedSearch/stylesheet&quot;: {
-            &quot;title&quot;: &quot;$:/plugins/FelixHayashi&amp;Spangenhelm/EnhancedSearch/stylesheet&quot;,
-            &quot;tags&quot;: &quot;$:/tags/Stylesheet&quot;,
-            &quot;type&quot;: &quot;text/css&quot;,
-            &quot;text&quot;: &quot;div.tc-search-results {\n   padding-top: 0;\n}&quot;
         },
         &quot;$:/core/ui/SideBarLists&quot;: {
             &quot;title&quot;: &quot;$:/core/ui/SideBarLists&quot;,
@@ -5967,29 +5959,15 @@ Error message and password prompt
             &quot;title&quot;: &quot;$:/language/SideBar/Search/Caption&quot;,
             &quot;text&quot;: &quot;Search&quot;
         },
-        &quot;$:/plugins/FelixHayashi&amp;Spangenhelm/EnhancedSearch/readme&quot;: {
-            &quot;title&quot;: &quot;$:/plugins/FelixHayashi&amp;Spangenhelm/EnhancedSearch/readme&quot;,
+        &quot;$:/plugins/spangenhelm/enhancedsearch/readme&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/spangenhelm/enhancedsearch/readme&quot;,
             &quot;text&quot;: &quot;This plugin allows you to have the search-results displayed in a tab without hiding other existing tabs in the sidebar.\n&quot;
-        }
-    }
-}
-</pre>
-</div>
-<div author="Simon Whitaker, adapted for TiddlyWiki by JeremyRuston" dependents="" description="Corner ribbon" list="readme usage" plugin-type="plugin" title="$:/plugins/tiddlywiki/github-fork-ribbon" type="application/json" version="5.1.9">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;$:/plugins/tiddlywiki/github-fork-ribbon/readme&quot;: {
-            &quot;title&quot;: &quot;$:/plugins/tiddlywiki/github-fork-ribbon/readme&quot;,
-            &quot;text&quot;: &quot;This plugin provides a diagonal ribbon across the corner of the window. It resembles the design used by ~GitHub for their \&quot;Fork me on ~GitHub\&quot; ribbons.\n\nThe ribbon can be positioned over any corner, and can incorporate user defined text, colours and a link.\n\nThe CSS stylesheet is adapted from work by Simon Whitaker:\n\nhttps://github.com/simonwhitaker/github-fork-ribbon-css/\n\n[[Source code|https://github.com/Jermolene/TiddlyWiki5/blob/master/plugins/tiddlywiki/github-fork-ribbon]]\n&quot;
         },
-        &quot;$:/plugins/tiddlywiki/github-fork-ribbon/styles&quot;: {
-            &quot;title&quot;: &quot;$:/plugins/tiddlywiki/github-fork-ribbon/styles&quot;,
-            &quot;tags&quot;: &quot;[[$:/tags/Stylesheet]]&quot;,
-            &quot;text&quot;: &quot;/* Left will inherit from right (so we don't need to duplicate code */\n.github-fork-ribbon {\n  /* The right and left lasses determine the side we attach our banner to */\n  position: absolute;\n\n  /* Add a bit of padding to give some substance outside the \&quot;stitching\&quot; */\n  padding: 2px 0;\n\n  /* Set the base colour */\n  background-color: #a00;\n\n  /* Set a gradient: transparent black at the top to almost-transparent black at the bottom */\n  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.00)), to(rgba(0, 0, 0, 0.15)));\n  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.00), rgba(0, 0, 0, 0.15));\n  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.00), rgba(0, 0, 0, 0.15));\n  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.00), rgba(0, 0, 0, 0.15));\n  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.00), rgba(0, 0, 0, 0.15));\n  background-image: linear-gradient(top, rgba(0, 0, 0, 0.00), rgba(0, 0, 0, 0.15));\n  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#000000', EndColorStr='#000000');\n\n  /* Add a drop shadow */\n  -webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);\n  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);\n\n  z-index: 999;\n  pointer-events: auto;\n}\n\n.github-fork-ribbon a, .github-fork-ribbon a.tc-tiddlylink,\n.github-fork-ribbon a:hover, .github-fork-ribbon a.tc-tiddlylink:hover  {\n  /* Set the font */\n  font-family: \&quot;Helvetica Neue\&quot;, Helvetica, Arial, sans-serif;\n  font-size: 13px;\n  font-weight: 700;\n  color: white;\n\n  /* Set the text properties */\n  text-decoration: none;\n  text-shadow: 0 -1px rgba(0,0,0,0.5);\n  text-align: center;\n\n  /* Set the geometry. If you fiddle with these you'll also need to tweak the top and right values in #github-fork-ribbon. */\n  width: 200px;\n  line-height: 20px;\n\n  /* Set the layout properties */\n  display: inline-block;\n  padding: 2px 0;\n\n  /* Add \&quot;stitching\&quot; effect */\n  border-width: 1px 0;\n  border-style: dotted;\n  border-color: rgba(255,255,255,0.7);\n}\n\n.github-fork-ribbon-wrapper {\n  width: 150px;\n  height: 150px;\n  position: absolute;\n  overflow: hidden;\n  top: 0;\n  z-index: 999;\n  pointer-events: none;\n}\n\n.github-fork-ribbon-wrapper.fixed {\n  position: fixed;\n}\n\n.github-fork-ribbon-wrapper.left {\n  left: 0;\n}\n\n.github-fork-ribbon-wrapper.right {\n  right: 0;\n}\n\n.github-fork-ribbon-wrapper.left-bottom {\n  position: fixed;\n  top: inherit;\n  bottom: 0;\n  left: 0;\n}\n\n.github-fork-ribbon-wrapper.right-bottom {\n  position: fixed;\n  top: inherit;\n  bottom: 0;\n  right: 0;\n}\n\n.github-fork-ribbon-wrapper.right .github-fork-ribbon {\n  top: 42px;\n  right: -43px;\n\n  /* Rotate the banner 45 degrees */\n  -webkit-transform: rotate(45deg);\n  -moz-transform: rotate(45deg);\n  -o-transform: rotate(45deg);\n  transform: rotate(45deg);\n}\n\n.github-fork-ribbon-wrapper.left .github-fork-ribbon {\n  top: 42px;\n  left: -43px;\n\n  /* Rotate the banner -45 degrees */\n  -webkit-transform: rotate(-45deg);\n  -moz-transform: rotate(-45deg);\n  -o-transform: rotate(-45deg);\n  transform: rotate(-45deg);\n}\n\n\n.github-fork-ribbon-wrapper.left-bottom .github-fork-ribbon {\n  top: 80px;\n  left: -43px;\n\n  /* Rotate the banner -45 degrees */\n  -webkit-transform: rotate(45deg);\n  -moz-transform: rotate(45deg);\n  -o-transform: rotate(45deg);\n  transform: rotate(45deg);\n}\n\n.github-fork-ribbon-wrapper.right-bottom .github-fork-ribbon {\n  top: 80px;\n  right: -43px;\n\n  /* Rotate the banner -45 degrees */\n  -webkit-transform: rotate(-45deg);\n  -moz-transform: rotate(-45deg);\n  -o-transform: rotate(-45deg);\n  transform: rotate(-45deg);\n}\n&quot;
-        },
-        &quot;$:/plugins/tiddlywiki/github-fork-ribbon/usage&quot;: {
-            &quot;title&quot;: &quot;$:/plugins/tiddlywiki/github-fork-ribbon/usage&quot;,
-            &quot;text&quot;: &quot;```\n&lt;!-- TOP RIGHT RIBBON: START COPYING HERE --&gt;\n&lt;div class=\&quot;github-fork-ribbon-wrapper right\&quot;&gt;&lt;div class=\&quot;github-fork-ribbon\&quot;&gt;&lt;a href=\&quot;https://github.com/simonwhitaker/github-fork-ribbon-css\&quot;&gt;Fork me on ~GitHub&lt;/a&gt;&lt;/div&gt;\n&lt;/div&gt;\n&lt;!-- TOP RIGHT RIBBON: END COPYING HERE --&gt;\n\n&lt;!-- TOP LEFT RIBBON: START COPYING HERE --&gt;\n&lt;div class=\&quot;github-fork-ribbon-wrapper left\&quot;&gt;&lt;div class=\&quot;github-fork-ribbon\&quot;&gt;&lt;a href=\&quot;https://github.com/simonwhitaker/github-fork-ribbon-css\&quot;&gt;Fork me on ~GitHub&lt;/a&gt;&lt;/div&gt;\n&lt;/div&gt;\n&lt;!-- TOP LEFT RIBBON: END COPYING HERE --&gt;\n\n\n&lt;!-- BOTTOM RIGHT RIBBON: START COPYING HERE --&gt;\n&lt;div class=\&quot;github-fork-ribbon-wrapper right-bottom\&quot;&gt;&lt;div class=\&quot;github-fork-ribbon\&quot;&gt;&lt;a href=\&quot;https://github.com/simonwhitaker/github-fork-ribbon-css\&quot;&gt;Fork me on ~GitHub&lt;/a&gt;&lt;/div&gt;\n&lt;/div&gt;\n&lt;!-- BOTTOM RIGHT RIBBON: END COPYING HERE --&gt;\n\n&lt;!-- BOTTOM LEFT RIBBON: START COPYING HERE --&gt;\n&lt;div class=\&quot;github-fork-ribbon-wrapper left-bottom\&quot;&gt;&lt;div class=\&quot;github-fork-ribbon\&quot;&gt;&lt;a href=\&quot;https://github.com/simonwhitaker/github-fork-ribbon-css\&quot;&gt;Fork me on ~GitHub&lt;/a&gt;&lt;/div&gt;\n&lt;/div&gt;\n&lt;!-- BOTTOM LEFT RIBBON: END COPYING HERE --&gt;\n```\n&quot;
+        &quot;$:/plugins/spangenhelm/enhancedsearch/stylesheet&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/spangenhelm/enhancedsearch/stylesheet&quot;,
+            &quot;tags&quot;: &quot;$:/tags/Stylesheet&quot;,
+            &quot;type&quot;: &quot;text/css&quot;,
+            &quot;text&quot;: &quot;div.tc-search-results {\n   padding-top: 0;\n}\n&quot;
         }
     }
 }</pre>
@@ -6208,7 +6186,7 @@ When running tiddlywiki via nodejs, just download and reference the files in the
 
 When running TiddlyWiki in stand-alone mode, use the version below:
 
-* [[EnhancedSearchResults Plugin (TW v5.1.9)|$:/plugins/FelixHayashi&amp;Spangenhelm/EnhancedSearch]]
+* [[EnhancedSearchResults Plugin (TW v5.1.9)|$:/plugins/spangenhelm/enhancedsearch]]
 
 !! Want to make it even better?
 

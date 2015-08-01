@@ -4,7 +4,7 @@
     "tiddlywiki/highlight",
     "tiddlywiki/tiddlyweb",
     "tiddlywiki/filesystem",
-    "FelixHayashi&Spangenhelm/EnhancedSearch"
+    "spangenhelm/enhancedsearch"
   ],
   "themes": [
     "tiddlywiki/vanilla"

@@ -34,7 +34,7 @@ When running tiddlywiki via nodejs, just download and reference the files in the
 
 When running TiddlyWiki in stand-alone mode, use the version below:
 
-* [[EnhancedSearchResults Plugin (TW v5.1.9)|$:/plugins/FelixHayashi&Spangenhelm/EnhancedSearch]]
+* [[EnhancedSearchResults Plugin (TW v5.1.9)|$:/plugins/spangenhelm/enhancedsearch]]
 
 !! Want to make it even better?
 
